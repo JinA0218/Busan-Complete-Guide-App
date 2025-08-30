@@ -2,7 +2,7 @@
 
 
 ## Development Team  
-- **Shin Jongmin**, Pusan National University, Class of 2019  
+- **Shin Jongmin**, Busan National University, Class of 2019  
 - **Jina Kim**, KAIST, School of Freshmen  
 
 ---
