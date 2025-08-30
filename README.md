@@ -391,7 +391,7 @@ Users can check all “liked” items from restaurants, attractions, and festiva
 
 - Each festival entry has a URL link to the official website.
 
-### 5.“Ham Bara”(Check it out) : Liked List
+### 5.“함 봐라”(Check it out) : Liked List
 
 <div>
 
