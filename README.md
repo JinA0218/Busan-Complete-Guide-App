@@ -83,7 +83,7 @@ Users can check all “liked” items from restaurants, attractions, and festiva
 
 **Example API:**  
 
-    ```js
+    ```sql
     app.post('/getFoodByTags', (req, res) => {
         console.log("getFoodByTags 요청 시작 !!!!");
         console.log(req.body);
@@ -329,7 +329,7 @@ Users can check all “liked” items from restaurants, attractions, and festiva
         
         - Remove Like
         
-        ```js
+        ```sql
         app.post('/dislikeFestivalHeart', (req, res) => {
             console.log("dislikeFestivalHeart 요청 시작 !!!!");
             console.log(req.body);
