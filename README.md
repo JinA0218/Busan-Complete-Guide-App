@@ -1,16 +1,13 @@
-# Kaist_What_Team
-
-# <image src="./app/src/main/res/drawable/travel2.png" width="45"/> 부산 풀코스
+# <image src="./app/src/main/res/drawable/travel2.png" width="45"/> Busan Complete Guide
 
 
-## 개발 팀원
+## Development Team  
+- **Shin Jongmin**, Pusan National University, Class of 2019  
+- **Jina Kim**, KAIST, School of Freshmen  
 
-- 부산대 19학번 신종민
-- KAIST 새내기과정학부 김지나
+---
 
-<br>
-
-## 개발 환경
+## Development Environment 
 Client)
 - OS: Android (minSdk: 26, targetSdk: 32)
 - Language: Java
@@ -24,16 +21,20 @@ Server)
 - DataBase: Mysql
 
 
-<br>
+---
 
-## 앱 소개
+## Introduction 
 <image src="./app/src/main/res/drawable/s0.png" width="200"/> 
 
-'부산 풀코스' 앱은 부산 맛집, 부산 명소, 부산 축제 추천 기능을 갖춘 앱입니다. <br>
-부산 맛집, 부산 명소, 부산 축제에서 좋아요를 누른 각 목록을 ‘함 봐라’탭에서 한번에 확인할 수 있습니다.
-<br>
+The **“Busan Complete Guide”** app provides recommendations for **Busan restaurants, attractions, and festivals**.  
 
-### 1. 회원가입, 로그인, 내 정보 수정
+Users can check all “liked” items from restaurants, attractions, and festivals in one place under the **“함 봐라 (Check it out)”** tab.  
+
+---
+
+## Features  
+
+### 1. Sign Up, Login, Profile Update  
 
 <div>
 
@@ -47,13 +48,15 @@ Server)
 
 </div>
 
-- 처음 앱을 실행하면 Splash 기능과 함께 로그인 탭으로 이동합니다. 계정이 없을 경우, 회원가입 탭으로 이동하여 회원가입을 진행할 수 있습니다.
-- 로그인 후, `FirstPage`로 이동하며, `username`+ 어서온나! 멘트와 함께 부산 날씨를 확인할 수 있으며, 부산 맛집, 부산 명소, 부산 축제 버튼을 선택 가능합니다.
-- 오른쪽 상단 버튼을 눌러주면 회원 정보 수정이 가능합니다.
+- On first launch, the app displays a **Splash screen** and moves to the **Login tab**.  
+- If the user has no account, they can proceed to the **Sign Up tab** to register.  
+- After login, the user is directed to the **FirstPage**, which displays:  
+  - Greeting message: `username + "어서온나!"` (Welcome!)  
+  - Current Busan weather  
+  - Buttons for **Restaurants, Attractions, Festivals**  
+- The **top-right button** allows the user to update profile information.  
 
-<br>
-
-<br>
+---
 
 <div>
 
@@ -61,7 +64,7 @@ Server)
 
 </div>
 
-### 2. 뭐 물래? (맛집 추천)
+### 2. “뭐 물래?”(What do you want to eat?) : Restaurant Recommendation
 
 <div>
 
@@ -71,13 +74,16 @@ Server)
 <image src="./app/src/main/res/drawable/s8.png" width="200"/>
 <image src="./app/src/main/res/drawable/s81.png" width="200"/>
 
-- **뭐 물래?** 버튼을 클릭하면 `BusanFoodStep1`으로 이동합니다.
-- 키워드를 선택하면 선택한 키워드에 맞게 부산 맛집 정보를 ListView로 띄워줍니다. 이때 키워드는 최소 1개부터 최대 3개까지 선택 가능합니다.
-    - **태그 작업**
-    
-    태그 클릭 시에 addTag라는 메서드를 호출해서 DB에 tag들을 JSON으로 보내고 tag에 해당하는 데이터를 JSON으로 받아서 ListView를 이용하여 구현하였습니다.
-    
-    ```sql
+- Clicking the **Mwo Moolae?** button moves to **BusanFoodStep1**.  
+- Users select **1–3 keywords**, and the app returns restaurant information via a **ListView**.  
+
+**Tag Function**  
+- When a tag is clicked, the app calls the `addTag` method, sending selected tags as JSON to the DB.  
+- The server returns matching restaurant data as JSON, which is displayed in a ListView.  
+
+**Example API:**  
+
+    ```js
     app.post('/getFoodByTags', (req, res) => {
         console.log("getFoodByTags 요청 시작 !!!!");
         console.log(req.body);
@@ -182,8 +188,11 @@ Server)
         }, 200);
     });
     ```
-    
-- 리스트로 나타난 항목 중 하나를 선택하면 `FoodFullImage`로 이동하며, 다음의 정보들을 확인할 수 있습니다.
+
+**Restaurant Details**
+
+- Selecting an item from the list moves to FoodFullImage, where the following are displayed:
+    - Title, Subtitle, Place, Image, Context, Tags, Latitude, Longitude, Telephone
     - **BusanFoodDto**
     
     ```jsx
@@ -280,12 +289,21 @@ Server)
     
     }
     ```
-    
-- `FoodFullImage`에서 좋아요 버튼, 전화 걸기 버튼, 공유하기 버튼을 사용할 수 있습니다.
-    - **좋아요** 버튼을 클릭하면 좋아요 리스트에 추가되며, 취소도 가능합니다.
-        - **좋아요** 추가
+
+**Buttons Available in FoodFullImage:**
+- Like button → add/remove from favorites list
+
+- Call button → call the restaurant directly
+
+- Share button → share Naver search link with friends
+
+- Google Maps integration using latitude & longitude
+
+**API Examples:**
+
+- Add Like:
         
-        ```sql
+        ```js
         app.post('/likeFestivalHeart', (req, res) => {
             console.log("likeFestivalHeart 요청 시작 !!!!");
             console.log(req.body);
@@ -309,9 +327,9 @@ Server)
         });
         ```
         
-        - **좋아요** 취소
+        - Remove Like
         
-        ```sql
+        ```js
         app.post('/dislikeFestivalHeart', (req, res) => {
             console.log("dislikeFestivalHeart 요청 시작 !!!!");
             console.log(req.body);
@@ -334,16 +352,16 @@ Server)
         });
         ```
         
-    - **전화 걸기** 버튼을 클릭하면 식당으로 전화를 걸 수 있습니다.
-    - **공유하기** 버튼을 클릭하면 해당 식당 네이버 검색 링크를 친구에게 공유할 수 있습니다.
-- latitude와 longtitude를 받아와서 Google Map으로 위치도 확인할 수 있게끔 구현했습니다.
-- **더 많은 장소 더보기** 버튼을 클릭하면 다시 `BusanFoodStep1`로 이동하면서 리스트를 다시 확인할 수 있습니다.
+- **Call button** → directly places a call to the restaurant.  
+- **Share button** → shares the Naver search link of the restaurant with friends.  
+- **Google Maps integration** → uses latitude and longitude values to display the restaurant’s location on the map.  
+- **See More button** → redirects back to `BusanFoodStep1`, allowing the user to reload and view the list of places again. 
 
 <br>
 
 <br>
 
-### 3. 어디 갈래? (부산 명소 추천)
+### 3. “어디 갈래?”(Where do you want to go?) : Attraction Recommendation
 
 <div>
 
@@ -353,13 +371,14 @@ Server)
 
 </div>
 
-- **어디 갈래 항목은** 전화 기능을 제외한 나머지 기능들은 **뭐 물래** 기능과 동일하게 구현되었습니다.
+- Same features as Restaurant Recommendation
+- Except without the telephone function.
 
 <br>
 
 <br>
 
-### 4. 뭐 할래? (부산 축제 추천)
+### “뭐 할래?”(What do you want to do?) : Festival Recommendation
 
 <div>
 
@@ -368,10 +387,11 @@ Server)
 
 </div>
 
-- **뭐 할래** 항목은 태그 기능 없이 모든 부산 축제 정보들을 ListView로 보여줍니다.
-- **뭐 할래** 항목은 URL을 통해 홈페이지로 이동이 가능합니다.
+- Displays all Busan festival information in a ListView (no tags).
 
-### 5. 함 봐라 (좋아요 리스트)
+- Each festival entry has a URL link to the official website.
+
+### 5.“Ham Bara”(Check it out) : Liked List
 
 <div>
 
@@ -383,10 +403,23 @@ Server)
 
 </div>
 
-- 함 봐라 버튼을 누르면, 뭐 물래, 어디 갈래, 뭐 할래 항목에서 좋아요를 누른 리스트를 ListView로 띄워줍니다. 리스트의 각 항목을 클릭하면 `FullImage` Activity로 이동합니다.
+- Displays all liked items from:
+    - 뭐 물래? (Restaurants)
+    - 어디 갈래? (Attractions)
+    - 뭐 할래? (Festival)
+- Items are shown in a ListView.
+
+- Clicking an item opens the FullImage Activity.
 
 * * *
-### 공공 데이터 활용
+### Public Data Usage
+- The app utilizes open public data to construct the following DTOs:
+
+    - BusanFoodDto
+
+    - BusanFestivalDto
+
+    - BusanTodoDto
 <image src="./app/src/main/res/drawable/sdata.png" width="200"/>
 <image src="./app/src/main/res/drawable/sdata2.png" width="200"/>
 <br>
