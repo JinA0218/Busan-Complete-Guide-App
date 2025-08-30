@@ -1,4 +1,4 @@
-# <image src="./app/src/main/res/drawable/travel2.png" width="45"/> Busan Complete Guide
+# <image src="./app/src/main/res/drawable/travel2.png" width="45"/> Busan Complete Guide App
 
 
 ## Development Team  
