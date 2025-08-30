@@ -74,7 +74,7 @@ Users can check all “liked” items from restaurants, attractions, and festiva
 <image src="./app/src/main/res/drawable/s8.png" width="200"/>
 <image src="./app/src/main/res/drawable/s81.png" width="200"/>
 
-- Clicking the **뭐 물래래?** button moves to **BusanFoodStep1**.  
+- Clicking the **뭐 물래?** button moves to **BusanFoodStep1**.  
 - Users select **1–3 keywords**, and the app returns restaurant information via a **ListView**.  
 
 **Tag Function**  
